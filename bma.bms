@@ -1,0 +1,19 @@
+# BMA Archive
+
+IDString 0 "BMA"
+Get FILES Long 0
+Get OFFSET Long 0
+Get OFFSETHIGH Long 0
+GoTo OFFSET 0
+For FILE = 1 To FILES
+    Get NAMESIZE Byte 0
+    GetDString FILENAME NAMESIZE 0
+    Get FILESIZE Long 0
+    Get FILEPOS Long 0
+    Get FILECODE Byte 0
+    If FILECODE != 0
+        FileXOR 0xBD
+    Endif
+    Log FILENAME FILEPOS FILESIZE 0
+    FileXOR 0x00
+Next FILE
