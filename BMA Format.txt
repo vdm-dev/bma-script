@@ -1,0 +1,13 @@
+BMA File Structure:
+Offset | Size | Data
+0      | 3    | BMA Signature
+3      | 4    | UINT32 Files Count
+7      | 8    | UINT64 File Map Offset (FMO)
+0F     | ---  | First Record
+...
+FMO    | ---  | Start of File Map
+       | 1    | Length of File Name (LFN)
+LFN	   | ---  | File Name
+       | 4    | File Size
+       | 4    | File Offset
+       | 1    | 0x01 - Crypted, 0x00 - Uncrypted
